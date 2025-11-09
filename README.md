@@ -32,7 +32,7 @@
         </div>
         <div>
           <h1 class="title">Ek Onakar</h1>
-          <div class="subtitle">An introduction to Gurbani and the core Sikh teaching: "There is One Creator"</div>
+          <div class="subtitle">An introduction to Gurbani and the core Sikh teaching: "Trying to Explain the gurbani"</div>
         </div>
         <div style="margin-left:auto">
           <!-- Khanda symbol (SVG) -->
