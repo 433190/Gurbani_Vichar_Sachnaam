@@ -1,66 +1,179 @@
-import tkinter as tk
-from tkinter import messagebox
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sikh History Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #quiz-container {
+            background: #fff;
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            width: 500px;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        .option {
+            background: #e0e0e0;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .option:hover {
+            background: #d0d0d0;
+        }
+        #score {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: none;
+            background: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #45a049;
+        }
+    </style>
+</head>
+<body>
 
-# List of questions, answers, and marks
-quiz = [
-    {"question": "Who was the founder of Sikhism?", "answer": "Guru Nanak Dev Ji", "marks": 1},
-    {"question": "In which year was Guru Nanak Dev Ji born?", "answer": "1469", "marks": 1},
-    {"question": "Which Guru compiled the Adi Granth, the holy scripture of Sikhs?", "answer": "Guru Arjan Dev Ji", "marks": 2},
-    {"question": "What is the significance of Vaisakhi in Sikhism?", "answer": "Formation of Khalsa in 1699", "marks": 2},
-    {"question": "Who was the 10th Sikh Guru?", "answer": "Guru Gobind Singh Ji", "marks": 1},
-    {"question": "What are the five Ks of Sikhism?", "answer": "Kesh, Kangha, Kara, Kachera, Kirpan", "marks": 2},
-    {"question": "Which battle is Guru Gobind Singh Ji famous for?", "answer": "Battle of Chamkaur", "marks": 2},
-    {"question": "Who was the first Sikh martyr?", "answer": "Guru Arjan Dev Ji", "marks": 1},
-    {"question": "Where is the Golden Temple located?", "answer": "Amritsar, Punjab, India", "marks": 1},
-    {"question": "Which Guru introduced the concept of Langar?", "answer": "Guru Nanak Dev Ji", "marks": 1}
-]
+<div id="quiz-container">
+    <h2 id="question">Question text</h2>
+    <div id="options"></div>
+    <div id="score"></div>
+    <button id="next-btn">Next Question</button>
+</div>
 
-class SikhQuizApp:
-    def __init__(self, root):
-        self.root = root
-        self.root.title("Sikh History Quiz")
-        self.root.geometry("600x300")
-        self.current_question = 0
-        self.score = 0
+<script>
+const quiz = [
+    {
+        question: "Who was the founder of Sikhism?",
+        options: ["Guru Nanak Dev Ji", "Guru Gobind Singh Ji", "Guru Arjan Dev Ji", "Guru Tegh Bahadur Ji"],
+        answer: "Guru Nanak Dev Ji",
+        marks: 1
+    },
+    {
+        question: "In which year was Guru Nanak Dev Ji born?",
+        options: ["1469", "1499", "1505", "1450"],
+        answer: "1469",
+        marks: 1
+    },
+    {
+        question: "Which Guru compiled the Adi Granth?",
+        options: ["Guru Arjan Dev Ji", "Guru Gobind Singh Ji", "Guru Nanak Dev Ji", "Guru Ram Das Ji"],
+        answer: "Guru Arjan Dev Ji",
+        marks: 2
+    },
+    {
+        question: "What is the significance of Vaisakhi in Sikhism?",
+        options: ["Formation of Khalsa in 1699", "Birth of Guru Nanak", "Start of Langar", "Guru Granth Sahib completion"],
+        answer: "Formation of Khalsa in 1699",
+        marks: 2
+    },
+    {
+        question: "Who was the 10th Sikh Guru?",
+        options: ["Guru Gobind Singh Ji", "Guru Arjan Dev Ji", "Guru Nanak Dev Ji", "Guru Tegh Bahadur Ji"],
+        answer: "Guru Gobind Singh Ji",
+        marks: 1
+    },
+    {
+        question: "What are the five Ks of Sikhism?",
+        options: ["Kesh, Kangha, Kara, Kachera, Kirpan", "Kangha, Kara, Langar, Kirpan, Kachera", "Kesh, Kara, Langar, Kirpan, Kachera", "Kara, Kesh, Kangha, Kirpan, Langar"],
+        answer: "Kesh, Kangha, Kara, Kachera, Kirpan",
+        marks: 2
+    },
+    {
+        question: "Which battle is Guru Gobind Singh Ji famous for?",
+        options: ["Battle of Chamkaur", "Battle of Panipat", "Battle of Kurukshetra", "Battle of Sirhind"],
+        answer: "Battle of Chamkaur",
+        marks: 2
+    },
+    {
+        question: "Who was the first Sikh martyr?",
+        options: ["Guru Arjan Dev Ji", "Guru Tegh Bahadur Ji", "Guru Gobind Singh Ji", "Guru Nanak Dev Ji"],
+        answer: "Guru Arjan Dev Ji",
+        marks: 1
+    },
+    {
+        question: "Where is the Golden Temple located?",
+        options: ["Amritsar, Punjab, India", "Delhi, India", "Chandigarh, India", "Lahore, Pakistan"],
+        answer: "Amritsar, Punjab, India",
+        marks: 1
+    },
+    {
+        question: "Which Guru introduced the concept of Langar?",
+        options: ["Guru Nanak Dev Ji", "Guru Arjan Dev Ji", "Guru Gobind Singh Ji", "Guru Tegh Bahadur Ji"],
+        answer: "Guru Nanak Dev Ji",
+        marks: 1
+    }
+];
 
-        # Question Label
-        self.question_label = tk.Label(root, text="", wraplength=550, font=("Arial", 14))
-        self.question_label.pack(pady=20)
+let currentQuestion = 0;
+let score = 0;
 
-        # Answer Entry
-        self.answer_entry = tk.Entry(root, width=50)
-        self.answer_entry.pack(pady=10)
+const questionEl = document.getElementById("question");
+const optionsEl = document.getElementById("options");
+const scoreEl = document.getElementById("score");
+const nextBtn = document.getElementById("next-btn");
 
-        # Submit Button
-        self.submit_btn = tk.Button(root, text="Submit Answer", command=self.check_answer)
-        self.submit_btn.pack(pady=10)
+function loadQuestion() {
+    const q = quiz[currentQuestion];
+    questionEl.textContent = `Q${currentQuestion + 1}: ${q.question}`;
+    optionsEl.innerHTML = "";
 
-        # Display the first question
-        self.display_question()
+    q.options.forEach(option => {
+        const btn = document.createElement("div");
+        btn.textContent = option;
+        btn.className = "option";
+        btn.addEventListener("click", () => checkAnswer(option));
+        optionsEl.appendChild(btn);
+    });
+}
 
-    def display_question(self):
-        if self.current_question < len(quiz):
-            self.question_label.config(text=f"Q{self.current_question + 1}: {quiz[self.current_question]['question']}")
-            self.answer_entry.delete(0, tk.END)
-        else:
-            messagebox.showinfo("Quiz Completed", f"You scored {self.score} out of {sum(q['marks'] for q in quiz)}")
-            self.root.destroy()
+function checkAnswer(selected) {
+    const q = quiz[currentQuestion];
+    if (selected === q.answer) {
+        score += q.marks;
+        alert(`Correct! You earned ${q.marks} marks.`);
+    } else {
+        alert(`Wrong! Correct answer: ${q.answer}\nMarks: ${q.marks}`);
+    }
+    nextBtn.style.display = "block";
+}
 
-    def check_answer(self):
-        user_answer = self.answer_entry.get().strip()
-        correct_answer = quiz[self.current_question]["answer"]
+nextBtn.addEventListener("click", () => {
+    currentQuestion++;
+    if (currentQuestion < quiz.length) {
+        loadQuestion();
+        nextBtn.style.display = "none";
+    } else {
+        questionEl.textContent = "Quiz Completed!";
+        optionsEl.innerHTML = "";
+        scoreEl.textContent = `Your total score: ${score} out of ${quiz.reduce((acc, q) => acc + q.marks, 0)}`;
+        nextBtn.style.display = "none";
+    }
+});
 
-        if user_answer.lower() == correct_answer.lower():
-            self.score += quiz[self.current_question]["marks"]
-            messagebox.showinfo("Correct!", f"Correct! You earned {quiz[self.current_question]['marks']} marks.")
-        else:
-            messagebox.showerror("Wrong!", f"Wrong! The correct answer is: {correct_answer}\nMarks: {quiz[self.current_question]['marks']}")
+// Initialize first question
+loadQuestion();
+nextBtn.style.display = "none";
+</script>
 
-        self.current_question += 1
-        self.display_question()
-
-# Run the GUI
-if __name__ == "__main__":
-    root = tk.Tk()
-    app = SikhQuizApp(root)
-    root.mainloop()
+</body>
+</html>
