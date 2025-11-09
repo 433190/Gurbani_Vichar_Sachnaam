@@ -1,81 +1,179 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Ek Onakar — Gurbani</title>
-  <style>
-    :root{--bg:#fbfbfd;--card:#ffffff;--accent:#2b6cb0;--muted:#555}
-    body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', 'Helvetica Neue', Arial; margin:0; background:var(--bg); color:#111}
-    .container{max-width:900px;margin:48px auto;padding:24px}
-    .card{background:var(--card);border-radius:12px;box-shadow:0 6px 18px rgba(20,20,30,0.06);padding:28px}
-    header{display:flex;gap:18px;align-items:center}
-    .symbol{font-size:58px;line-height:1;color:var(--accent);font-weight:700}
-    .title{font-size:28px;margin:0}
-    .subtitle{color:var(--muted);margin-top:6px}
-    .khanda{width:72px;height:72px}
-
-    hr{border:none;border-top:1px solid #eee;margin:20px 0}
-    section p{line-height:1.65;margin:10px 0}
-    .gurmukhi{font-family:'GurbaniWeb Thick', 'Annapurna SIL', 'Raavi', 'Noto Sans Gurmukhi', serif; font-size:28px; margin:18px 0}
-    footer{margin-top:18px;color:#666;font-size:13px}
-    @media (max-width:560px){.symbol{font-size:44px}.khanda{width:56px;height:56px}}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sikh History Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #quiz-container {
+            background: #fff;
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            width: 500px;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        .option {
+            background: #e0e0e0;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .option:hover {
+            background: #d0d0d0;
+        }
+        #score {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: none;
+            background: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #45a049;
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <div class="card">
-      <header>
-        <div>
-          <!-- Ek Onkar symbol in Gurmukhi -->
-          <div class="symbol" aria-hidden="true">ੴ</div>
-        </div>
-        <div>
-          <h1 class="title">Ek Onakar</h1>
-          <div class="subtitle">An introduction to Gurbani and the core Sikh teaching: "We are trying the explain the basic abbreviations Gurbani has in it "</div>
-        </div>
-          <!-- Khanda symbol (SVG) -->
-          <svg class="khanda" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Khanda symbol">
-            <circle cx="32" cy="32" r="30" fill="none" stroke="#2b6cb0" stroke-width="2" />
-            <path d="M32 8v48" stroke="#2b6cb0" stroke-width="2.6" stroke-linecap="round" fill="none"/>
-            <path d="M20 18c4 8 12 10 12 10s8-2 12-10" stroke="#2b6cb0" stroke-width="2.2" fill="none" stroke-linecap="round"/>
-            <path d="M20 46c4-8 12-10 12-10s8 2 12 10" stroke="#2b6cb0" stroke-width="2.2" fill="none" stroke-linecap="round"/>
-            <path d="M28 22l-10 20" stroke="#2b6cb0" stroke-width="2" fill="none" stroke-linecap="round"/>
-            <path d="M36 22l10 20" stroke="#2b6cb0" stroke-width="2" fill="none" stroke-linecap="round"/>
-          </svg>
-        </div>
-      </header>
 
-      <hr />
+<div id="quiz-container">
+    <h2 id="question">Question text</h2>
+    <div id="options"></div>
+    <div id="score"></div>
+    <button id="next-btn">Next Question</button>
+</div>
 
-      <section>
-        <h2>About Gurbani</h2>
-        <p>Gurbani means the compositions of the Sikh Gurus and other enlightened saints included in the Guru Granth Sahib — the central scripture of Sikhism. It guides spiritual life, moral conduct, and the remembrance of the One Creator through sacred hymns and poetry.</p>
+<script>
+const quiz = [
+    {
+        question: "Who was the founder of Sikhism?",
+        options: ["Guru Nanak Dev Ji", "Guru Gobind Singh Ji", "Guru Arjan Dev Ji", "Guru Tegh Bahadur Ji"],
+        answer: "Guru Nanak Dev Ji",
+        marks: 1
+    },
+    {
+        question: "In which year was Guru Nanak Dev Ji born?",
+        options: ["1469", "1499", "1505", "1450"],
+        answer: "1469",
+        marks: 1
+    },
+    {
+        question: "Which Guru compiled the Adi Granth?",
+        options: ["Guru Arjan Dev Ji", "Guru Gobind Singh Ji", "Guru Nanak Dev Ji", "Guru Ram Das Ji"],
+        answer: "Guru Arjan Dev Ji",
+        marks: 2
+    },
+    {
+        question: "What is the significance of Vaisakhi in Sikhism?",
+        options: ["Formation of Khalsa in 1699", "Birth of Guru Nanak", "Start of Langar", "Guru Granth Sahib completion"],
+        answer: "Formation of Khalsa in 1699",
+        marks: 2
+    },
+    {
+        question: "Who was the 10th Sikh Guru?",
+        options: ["Guru Gobind Singh Ji", "Guru Arjan Dev Ji", "Guru Nanak Dev Ji", "Guru Tegh Bahadur Ji"],
+        answer: "Guru Gobind Singh Ji",
+        marks: 1
+    },
+    {
+        question: "What are the five Ks of Sikhism?",
+        options: ["Kesh, Kangha, Kara, Kachera, Kirpan", "Kangha, Kara, Langar, Kirpan, Kachera", "Kesh, Kara, Langar, Kirpan, Kachera", "Kara, Kesh, Kangha, Kirpan, Langar"],
+        answer: "Kesh, Kangha, Kara, Kachera, Kirpan",
+        marks: 2
+    },
+    {
+        question: "Which battle is Guru Gobind Singh Ji famous for?",
+        options: ["Battle of Chamkaur", "Battle of Panipat", "Battle of Kurukshetra", "Battle of Sirhind"],
+        answer: "Battle of Chamkaur",
+        marks: 2
+    },
+    {
+        question: "Who was the first Sikh martyr?",
+        options: ["Guru Arjan Dev Ji", "Guru Tegh Bahadur Ji", "Guru Gobind Singh Ji", "Guru Nanak Dev Ji"],
+        answer: "Guru Arjan Dev Ji",
+        marks: 1
+    },
+    {
+        question: "Where is the Golden Temple located?",
+        options: ["Amritsar, Punjab, India", "Delhi, India", "Chandigarh, India", "Lahore, Pakistan"],
+        answer: "Amritsar, Punjab, India",
+        marks: 1
+    },
+    {
+        question: "Which Guru introduced the concept of Langar?",
+        options: ["Guru Nanak Dev Ji", "Guru Arjan Dev Ji", "Guru Gobind Singh Ji", "Guru Tegh Bahadur Ji"],
+        answer: "Guru Nanak Dev Ji",
+        marks: 1
+    }
+];
 
-        <div class="gurmukhi" lang="pa">ਸਤਿਨਾਮੁ ਕਰਤਾ ਪੁਰਖੁ ਨਿਰਭਉ ਨਿਰਵੈਰੁ ਅਕਾਲ ਮੂਰਤਿ ਅਜੂਨੀ ਸੈਭੰ ਗੁਰ ਪ੍ਰਸਾਦਿ</div>
-        <p><strong>Transliteration (one commonly used):</strong> Satnam karta purakh nirbhao nirvair akal murat ajuni saibhang gurprasad.</p>
-        <p><strong>Meaning (short):</strong> The Divine Name is Truth, the Creator being; without fear, without enmity; timeless in form, beyond birth and death, self-existent — known by the Guru's grace.</p>
+let currentQuestion = 0;
+let score = 0;
 
-        <h3>Key themes in Gurbani</h3>
-        <ul>
-          <li>Oneness of God (Ek Onakar) — unity beyond names and forms.</li>
-          <li>Remembering God (Simran) — constant remembrance through sacred Naam.</li>
-          <li>Humility and service (Seva) — serving others is a key spiritual practice.</li>
-          <li>Living honestly (Kirat Karni) — moral and truthful living.</li>
-        </ul>
+const questionEl = document.getElementById("question");
+const optionsEl = document.getElementById("options");
+const scoreEl = document.getElementById("score");
+const nextBtn = document.getElementById("next-btn");
 
-        <h3>Short Shabad (example)</h3>
-        <p class="gurmukhi" lang="pa">ੴ ਸਤਿਨਾਮੁ ਕਰਤਾ ਪੁਰਖੁ...</p>
-        <p>These lines open the Guru Granth Sahib and capture the essential Sikh teaching: there is one timeless truth and creator.</p>
-      </section>
+function loadQuestion() {
+    const q = quiz[currentQuestion];
+    questionEl.textContent = `Q${currentQuestion + 1}: ${q.question}`;
+    optionsEl.innerHTML = "";
 
-      <footer>
-        <p>Content here is a short informational introduction. If you'd like, I can add more sections — for example: full translations, audio recitation, historical context, or embedding lines from specific Gurus with citations.</p>
-      </footer>
-    </div>
-  </div>
+    q.options.forEach(option => {
+        const btn = document.createElement("div");
+        btn.textContent = option;
+        btn.className = "option";
+        btn.addEventListener("click", () => checkAnswer(option));
+        optionsEl.appendChild(btn);
+    });
+}
+
+function checkAnswer(selected) {
+    const q = quiz[currentQuestion];
+    if (selected === q.answer) {
+        score += q.marks;
+        alert(`Correct! You earned ${q.marks} marks.`);
+    } else {
+        alert(`Wrong! Correct answer: ${q.answer}\nMarks: ${q.marks}`);
+    }
+    nextBtn.style.display = "block";
+}
+
+nextBtn.addEventListener("click", () => {
+    currentQuestion++;
+    if (currentQuestion < quiz.length) {
+        loadQuestion();
+        nextBtn.style.display = "none";
+    } else {
+        questionEl.textContent = "Quiz Completed!";
+        optionsEl.innerHTML = "";
+        scoreEl.textContent = `Your total score: ${score} out of ${quiz.reduce((acc, q) => acc + q.marks, 0)}`;
+        nextBtn.style.display = "none";
+    }
+});
+
+// Initialize first question
+loadQuestion();
+nextBtn.style.display = "none";
+</script>
+
 </body>
 </html>
-# Gurbani_Vichar_Sachnaam
-With the Grace of Waheguru and Sangat, we are trying trying to Explain the Gurbani Basic Terminologies which will be helpful in explanation of Guru Granth Sahib   
-
