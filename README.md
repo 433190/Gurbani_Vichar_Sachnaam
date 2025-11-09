@@ -63,9 +63,9 @@
 <script>
 const quiz = [
     {
-        question: "Who was the founder of Sikhism?",
-        options: ["Guru Nanak Dev Ji", "Guru Gobind Singh Ji", "Guru Arjan Dev Ji", "Guru Tegh Bahadur Ji"],
-        answer: "Guru Nanak Dev Ji",
+         question: "What is Naam?",
+        options: ["Sound of God", "Space", "Written words given by someone", "i dont know"],
+        answer: "Sound of God",
         marks: 1
     },
     {
@@ -78,13 +78,13 @@ const quiz = [
         question: "Which Guru compiled the Adi Granth?",
         options: ["Guru Arjan Dev Ji", "Guru Gobind Singh Ji", "Guru Nanak Dev Ji", "Guru Ram Das Ji"],
         answer: "Guru Arjan Dev Ji",
-        marks: 2
+        marks: 1
     },
     {
         question: "What is the significance of Vaisakhi in Sikhism?",
         options: ["Formation of Khalsa in 1699", "Birth of Guru Nanak", "Start of Langar", "Guru Granth Sahib completion"],
         answer: "Formation of Khalsa in 1699",
-        marks: 2
+        marks: 1
     },
     {
         question: "Who was the 10th Sikh Guru?",
@@ -96,13 +96,13 @@ const quiz = [
         question: "What are the five Ks of Sikhism?",
         options: ["Kesh, Kangha, Kara, Kachera, Kirpan", "Kangha, Kara, Langar, Kirpan, Kachera", "Kesh, Kara, Langar, Kirpan, Kachera", "Kara, Kesh, Kangha, Kirpan, Langar"],
         answer: "Kesh, Kangha, Kara, Kachera, Kirpan",
-        marks: 2
+        marks: 1
     },
     {
         question: "Which battle is Guru Gobind Singh Ji famous for?",
         options: ["Battle of Chamkaur", "Battle of Panipat", "Battle of Kurukshetra", "Battle of Sirhind"],
         answer: "Battle of Chamkaur",
-        marks: 2
+        marks: 1
     },
     {
         question: "Who was the first Sikh martyr?",
