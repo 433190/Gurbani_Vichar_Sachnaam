@@ -33,21 +33,8 @@
         <div>
           <h1 class="title">Ek Onakar</h1>
           <div class="subtitle">An introduction to Gurbani and the core Sikh teaching: "Trying to Explain the gurbani"</div>
-        </div>
-        <div style="margin-left:auto">
-          <!-- Khanda symbol (SVG) -->
-          <svg class="khanda" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Khanda symbol">
-            <circle cx="32" cy="32" r="30" fill="none" stroke="#2b6cb0" stroke-width="2" />
-            <path d="M32 8v48" stroke="#2b6cb0" stroke-width="2.6" stroke-linecap="round" fill="none"/>
-            <path d="M20 18c4 8 12 10 12 10s8-2 12-10" stroke="#2b6cb0" stroke-width="2.2" fill="none" stroke-linecap="round"/>
-            <path d="M20 46c4-8 12-10 12-10s8 2 12 10" stroke="#2b6cb0" stroke-width="2.2" fill="none" stroke-linecap="round"/>
-            <path d="M28 22l-10 20" stroke="#2b6cb0" stroke-width="2" fill="none" stroke-linecap="round"/>
-            <path d="M36 22l10 20" stroke="#2b6cb0" stroke-width="2" fill="none" stroke-linecap="round"/>
-          </svg>
-        </div>
-      </header>
-
-      <hr />
+      
+  
 
       <section>
         <h2>About Gurbani</h2>
