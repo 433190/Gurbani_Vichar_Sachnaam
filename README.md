@@ -33,10 +33,7 @@
         <div>
           <h1 class="title">Ek Onakar</h1>
           <div class="subtitle">An introduction to Gurbani and the core Sikh teaching: "Trying to Explain the gurbani"</div>
-      
-  
-
-      <section>
+         <section>
         <h2>About Gurbani</h2>
         <p>Gurbani means the compositions of the Sikh Gurus and other enlightened saints included in the Guru Granth Sahib — the central scripture of Sikhism. It guides spiritual life, moral conduct, and the remembrance of the One Creator through sacred hymns and poetry.</p>
 
